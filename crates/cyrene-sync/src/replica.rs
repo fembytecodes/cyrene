@@ -313,10 +313,7 @@ impl Replica {
 
     fn advance_frontier(&mut self, author: ReplicaId) {
         let mut counter = self.frontier.get(author);
-        loop {
-            let Some(next) = counter.checked_add(1) else {
-                break;
-            };
+        while let Some(next) = counter.checked_add(1) {
             if !self.changes.contains_key(&ChangeId {
                 replica: author,
                 counter: next,
