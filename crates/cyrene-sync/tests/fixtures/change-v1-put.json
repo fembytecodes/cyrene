@@ -1,0 +1,1 @@
+{"id":{"replica":"00000000000000000000000001","counter":1},"space":"00000000000000000000000002","timestamp":{"physical_ms":1000,"logical":0,"replica":"00000000000000000000000001"},"operation":{"Put":{"collection":"notes","document":"00000000000000000000000003","schema":42,"payload":[1,2,3]}}}

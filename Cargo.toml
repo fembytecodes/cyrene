@@ -1,0 +1,80 @@
+[workspace]
+members = [
+    "crates/cyrene",
+    "crates/cyrene-cli",
+    "crates/cyrene-authority",
+    "crates/cyrene-core",
+    "crates/cyrene-crdt",
+    "crates/cyrene-identity",
+    "crates/cyrene-macros",
+    "crates/cyrene-net",
+    "crates/cyrene-relay",
+    "crates/cyrene-store",
+    "crates/cyrene-sync",
+    "crates/cyrene-trust",
+    "examples/counter",
+    "examples/notes",
+]
+exclude = ["fuzz", "templates/local-app"]
+resolver = "3"
+
+[workspace.package]
+version = "0.0.1"
+edition = "2024"
+rust-version = "1.85"
+license = "MIT OR Apache-2.0"
+repository = "https://github.com/fembytecodes/cyrene"
+
+[workspace.dependencies]
+anyhow = "1.0.100"
+base64 = "0.22.1"
+blake3 = "1.8.2"
+clap = { version = "4.5.47", features = ["derive"] }
+cyrene = { version = "=0.0.1", path = "crates/cyrene" }
+cyrene-authority = { version = "=0.0.1", path = "crates/cyrene-authority" }
+cyrene-core = { version = "=0.0.1", path = "crates/cyrene-core" }
+cyrene-crdt = { version = "=0.0.1", path = "crates/cyrene-crdt" }
+cyrene-identity = { version = "=0.0.1", path = "crates/cyrene-identity" }
+cyrene-macros = { version = "=0.0.1", path = "crates/cyrene-macros" }
+cyrene-net = { version = "=0.0.1", path = "crates/cyrene-net" }
+cyrene-relay = { version = "=0.0.1", path = "crates/cyrene-relay" }
+cyrene-store = { version = "=0.0.1", path = "crates/cyrene-store" }
+cyrene-sync = { version = "=0.0.1", path = "crates/cyrene-sync" }
+cyrene-trust = { version = "=0.0.1", path = "crates/cyrene-trust" }
+chacha20poly1305 = "0.10.1"
+rusqlite = { version = "0.37.0", features = ["backup", "bundled", "serialize"] }
+proc-macro2 = "1.0.103"
+proptest = "1.9.0"
+quote = "1.0.42"
+serde = { version = "1.0.228", features = ["derive"] }
+serde_json = "1.0.149"
+ed25519-dalek = { version = "3.0.0", features = ["rand_core"] }
+getrandom = "0.3.4"
+keyring = { version = "3.6.3", default-features = false }
+mdns-sd = "0.21.1"
+quinn = "0.11.11"
+rcgen = "0.14.7"
+rustls = "0.23.35"
+spake2 = "0.4.0"
+tempfile = "3.23.0"
+thiserror = "2.0.17"
+tokio = { version = "1.47.1", features = ["io-util", "macros", "net", "rt-multi-thread", "signal", "sync", "time"] }
+ulid = { version = "1.2.1", features = ["serde"] }
+zeroize = "1.8.2"
+syn = { version = "2.0.110", features = ["full"] }
+
+[workspace.lints.rust]
+missing_docs = "warn"
+unsafe_code = "forbid"
+unexpected_cfgs = "warn"
+
+[workspace.lints.clippy]
+all = { level = "warn", priority = -1 }
+pedantic = { level = "warn", priority = -1 }
+module_name_repetitions = "allow"
+must_use_candidate = "allow"
+
+[profile.release]
+debug = 1
+lto = "thin"
+strip = "symbols"

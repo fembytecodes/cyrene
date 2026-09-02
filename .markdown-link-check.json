@@ -1,0 +1,9 @@
+{
+  "ignorePatterns": [
+    {
+      "pattern": "^https://github.com/fembytecodes/cyrene"
+    }
+  ],
+  "retryOn429": true,
+  "timeout": "10s"
+}

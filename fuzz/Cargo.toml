@@ -1,0 +1,44 @@
+[package]
+name = "cyrene-fuzz"
+version = "0.0.0"
+publish = false
+edition = "2024"
+
+[package.metadata]
+cargo-fuzz = true
+
+[dependencies]
+cyrene-authority = { path = "../crates/cyrene-authority" }
+cyrene-net = { path = "../crates/cyrene-net" }
+cyrene-sync = { path = "../crates/cyrene-sync" }
+cyrene-trust = { path = "../crates/cyrene-trust" }
+libfuzzer-sys = "0.4"
+serde_json = "1"
+
+[[bin]]
+name = "relay_request"
+path = "fuzz_targets/relay_request.rs"
+test = false
+doc = false
+bench = false
+
+[[bin]]
+name = "recovery_bundle"
+path = "fuzz_targets/recovery_bundle.rs"
+test = false
+doc = false
+bench = false
+
+[[bin]]
+name = "replicated_change"
+path = "fuzz_targets/replicated_change.rs"
+test = false
+doc = false
+bench = false
+
+[[bin]]
+name = "share_invitation"
+path = "fuzz_targets/share_invitation.rs"
+test = false
+doc = false
+bench = false

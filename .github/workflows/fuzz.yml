@@ -1,0 +1,42 @@
+name: Scheduled fuzzing
+
+on:
+  workflow_dispatch:
+    inputs:
+      seconds:
+        description: Seconds per target
+        required: false
+        default: "900"
+  schedule:
+    - cron: "17 3 * * 1"
+
+permissions:
+  contents: read
+
+jobs:
+  fuzz:
+    runs-on: ubuntu-latest
+    timeout-minutes: 90
+    steps:
+      - uses: actions/checkout@v4
+      - name: Install Linux system dependencies
+        run: sudo apt-get update && sudo apt-get install --yes libdbus-1-dev pkg-config
+      - uses: dtolnay/rust-toolchain@nightly
+      - uses: Swatinem/rust-cache@v2
+        with:
+          workspaces: fuzz
+      - run: cargo install cargo-fuzz --locked
+      - name: Run sanitizer campaigns
+        env:
+          FUZZ_SECONDS: ${{ inputs.seconds || '900' }}
+        run: ./scripts/fuzz-all.sh
+      - uses: actions/upload-artifact@v4
+        if: always()
+        with:
+          name: fuzz-evidence-${{ github.sha }}
+          path: |
+            target/release-evidence/fuzz
+            fuzz/artifacts
+            fuzz/corpus
+          if-no-files-found: warn
+          retention-days: 30

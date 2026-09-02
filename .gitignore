@@ -1,0 +1,7 @@
+target/
+/fuzz/artifacts/
+/fuzz/corpus/
+*.db
+*.db-shm
+*.db-wal
+.DS_Store

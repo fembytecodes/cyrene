@@ -1,0 +1,36 @@
+[package]
+name = "cyrene"
+description = "A tiny, expressive local-first application framework for Rust"
+version.workspace = true
+edition.workspace = true
+rust-version.workspace = true
+license.workspace = true
+repository.workspace = true
+
+[dependencies]
+blake3.workspace = true
+cyrene-core.workspace = true
+cyrene-authority.workspace = true
+cyrene-crdt.workspace = true
+cyrene-identity.workspace = true
+cyrene-macros.workspace = true
+cyrene-net.workspace = true
+cyrene-store.workspace = true
+cyrene-sync.workspace = true
+cyrene-trust.workspace = true
+serde.workspace = true
+serde_json.workspace = true
+thiserror.workspace = true
+tokio.workspace = true
+zeroize.workspace = true
+
+[dev-dependencies]
+cyrene-relay.workspace = true
+tempfile.workspace = true
+
+[[bench]]
+name = "local_store"
+harness = false
+
+[lints]
+workspace = true

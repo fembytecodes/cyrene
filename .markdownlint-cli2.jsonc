@@ -1,0 +1,14 @@
+{
+  "config": {
+    "default": true,
+    "MD013": false,
+    "MD029": false,
+    "MD060": false
+  },
+  "globs": [
+    "**/*.md",
+    "!target/**",
+    "!fuzz/target/**",
+    "!templates/local-app/target/**"
+  ]
+}

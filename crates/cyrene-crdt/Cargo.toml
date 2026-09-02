@@ -1,0 +1,18 @@
+[package]
+name = "cyrene-crdt"
+description = "Explicit merge-aware Text and List datatypes for Cyrene"
+version.workspace = true
+edition.workspace = true
+rust-version.workspace = true
+license.workspace = true
+repository.workspace = true
+
+[dependencies]
+cyrene-core.workspace = true
+serde.workspace = true
+
+[dev-dependencies]
+proptest.workspace = true
+
+[lints]
+workspace = true
